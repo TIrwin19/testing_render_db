@@ -27,9 +27,45 @@ const args = process.argv
 // console.log(add)
 
 
+// a wrest or '...' makes an array, mist be in a function as an argument
+// function printStudents(...arr){
+//     console.log(arr)
+// }
 
-function printStudents(...arr){
-    console.log(arr)
+// printStudents('Wes', 'Will', 'Musin', 'Vince', 'juan', 'Alice')
+
+
+
+// const fruits = ['orange', 'apple']
+
+// const copy = ['kiwi', ...fruits, 'banana']
+
+// console.log(copy)
+
+// const data = {
+//     name: JD,
+//     age: 44
+// }
+
+// const clone = {...data}
+
+// console.log(clone)
+
+
+
+// const data = {
+//     name: JD,
+//     age: 44
+// }
+
+// const {name, age, blah} = data
+
+// console.log(data)
+
+
+
+function someFunc({age}, str, num){
+    console.log(num)
 }
 
-printStudents('Wes', 'Will', 'Musin', 'Vince', 'juan', 'Alice')
+someFunc({name: 'bob', age: 99}, 'another', 15)
