@@ -1,38 +1,72 @@
-function Person(name, age, hobbies) {
-    this.name = name
-    this.age = age
-    this.hobbies = hobbies
-}
+class Person {
+    constructor(name, age, hobbies) {
+        this.name = name
+        this.age = age
+        this.hobbies = hobbies
+    }
 
-Person.sayHi = function(){
-    console.log('Hi!')
-}
+    haveBirthday() {
+        this.age++
+        console.log('Happy Birthday', this.name)
+    }
 
-Person.prototype.species = 'Homosapien'
+    printBirthday(){
+        console.log(`${this.name} is ${this.age} years old.`)
+    }
 
-Person.prototype.haveBirthday = function () {
-    this.age++
-    console.log('Happy Birthday!')
-}
+    printHobbies(){
+        console.log('\nHobbies\n----------')
 
-Person.prototype.printBirthday = function(){
-    console.log(`You are ${this.age} years old`)
+        this.hobbies.forEach((hobby) => {
+            console.log(hobby)
+        })
+    }
 }
 
 const jd = new Person('JD', 44, ['fishing', 'pickleball'])
-const bob = new Person('Bob', 99, ['bingo', 'walks'])
-const sarah = new Person('Sarah', 28, ['Dancing', 'Climbing'])
 
-console.log(bob.species)
 console.log(jd)
-console.log(sarah)
 
 jd.haveBirthday()
-bob.haveBirthday()
-sarah.haveBirthday()
-
 jd.printBirthday()
-bob.printBirthday()
-sarah.printBirthday()
+jd.printHobbies()
 
-Person.sayHi
+
+// function Person(name, age, hobbies) {
+//     this.name = name
+//     this.age = age
+//     this.hobbies = hobbies
+// }
+
+// Person.sayHi = function(){
+//     console.log('Hi!')
+// }
+
+// Person.prototype.species = 'Homosapien'
+
+// Person.prototype.haveBirthday = function () {
+//     this.age++
+//     console.log('Happy Birthday!')
+// }
+
+// Person.prototype.printBirthday = function(){
+//     console.log(`You are ${this.age} years old`)
+// }
+
+// const jd = new Person('JD', 44, ['fishing', 'pickleball'])
+// const bob = new Person('Bob', 99, ['bingo', 'walks'])
+// const sarah = new Person('Sarah', 28, ['Dancing', 'Climbing'])
+
+// console.log(bob.species)
+// console.log(jd)
+// console.log(sarah)
+
+// jd.haveBirthday()
+// bob.haveBirthday()
+// sarah.haveBirthday()
+
+// jd.printBirthday()
+// bob.printBirthday()
+// sarah.printBirthday()
+
+// Person.sayHi
