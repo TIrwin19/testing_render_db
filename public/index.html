@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <title>User API Docs</title>
 </head>
+
 <body>
     <h1 class="text-center">User API</h1>
     <p class="text-center">Welcome! feel free to use out API and have fun!</p>
@@ -20,5 +22,41 @@
         <p class="route"><span>GET /api/users</span> - Returns all users</p>
         <p class="route"><span>GET /api/users/:ID</span> - Returns a single users by ID</p>
     </div>
+    <!-- Requires browser refresh -->
+    <form action="/api/users/form" method="post">
+        <input name="fillName" type="text" placeholder="Type yout name">
+        <button>Submit</button>
+    </form>
+
+    <button id="send">Submit JS</button>
+
+    <script>
+        fetch('/api/users') // GET
+            .then(res => res.json()
+                .then(data => {
+                    console.log(data)
+                }))
+        const btn = document.querySelector('#send')
+
+        btn.addEventListener('click', ()=> {
+            fetch('/api/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: 'Bob',
+                    age: 99
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                alert(data.message)
+            })
+        })
+        // Does not require browser refresh
+
+    </script>
 </body>
+
 </html>
