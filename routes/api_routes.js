@@ -39,6 +39,7 @@ router.post('/users/form', (req, res) => {
     res.redirect('/')
 })
 
+// Add a user
 router.post('/users', async (req, res) => {
     const id = generateID()
     const data = await getData()
@@ -51,6 +52,23 @@ router.post('/users', async (req, res) => {
     await fs.writeFile('./db/users.json', JSON.stringify(data, null, 2))
 
     res.json({ message: 'User has been added!' })
+})
+
+// Delete a user
+router.delete('/users/:id', async (req, res) => {
+    const users = await getData()
+    const id = req.params.id
+    const filtered = users.filter(uObj => uObj.id !== id)
+
+    await fs.writeFile('./db/users.json', JSON.stringify(filtered, null, 2))
+
+    res.json({
+        message: `User with ID of ${id} deleted successfully`
+    })
+
+    resjson({
+        message: 'A user with that ID cannot be found.'
+    })
 })
 
 module.exports = router
