@@ -23,38 +23,50 @@
         <p class="route"><span>GET /api/users/:ID</span> - Returns a single users by ID</p>
     </div>
     <!-- Requires browser refresh -->
-    <form action="/api/users/form" method="post">
+    <!-- <form action="/api/users/form" method="post">
         <input name="fillName" type="text" placeholder="Type yout name">
         <button>Submit</button>
+    </form> -->
+
+    <form id="user-form" action="/api/users/form" method="post">
+        <h2>Add User</h2>
+        <input name="name" type="text" placeholder="Type your name">
+        <input name="age" type="text" placeholder="Type your age">
+        <button id="send">Submit JS</button>
     </form>
 
-    <button id="send">Submit JS</button>
 
     <script>
         fetch('/api/users') // GET
             .then(res => res.json()
-                .then(data => {
-                    console.log(data)
-                }))
-        const btn = document.querySelector('#send')
+            .then(data => {
+                console.log(data)
+            }))
 
-        btn.addEventListener('click', ()=> {
+        const userForm = document.querySelector('#user-form')
+
+        userForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+            const nameInput = e.target.name
+            const ageInput = e.target.age
             fetch('/api/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    name: 'Bob',
-                    age: 99
+                    name: nameInput.value,
+                    age: ageInput.value
                 })
             })
-            .then(res => res.json())
-            .then(data => {
-                alert(data.message)
-            })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.message)
+
+                    nameInput.value = ''
+                    ageInput.value = ''
+                })
         })
-        // Does not require browser refresh
 
     </script>
 </body>
