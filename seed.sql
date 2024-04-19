@@ -17,3 +17,9 @@ INSERT INTO students (
   ('Bob', 'Jim', 'bjim@test.com', 'password123', 3),
   ('Ryan', 'Bricker', 'rbricker@test.com', 'password123', 2),
   ('Carol', 'Smith', 'csmith@test.com', 'password123', null);
+
+INSERT INTO prices (course_name, course_price)
+VALUES
+  ('Full Stack Flex', 5000),
+  ('Data Vis', 4000),
+  ('UX/UI', 3000);

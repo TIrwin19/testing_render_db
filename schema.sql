@@ -21,16 +21,10 @@ CREATE TABLE students (
   FOREIGN KEY (course_id) REFERENCES courses(id)
 );
 
-
-
-
-
-
-
-
-
-
-
+CREATE TABLE prices (
+  course_name VARCHAR(250) NOT NULL,
+  course_price INT NOT NULL
+);
 
 
 
