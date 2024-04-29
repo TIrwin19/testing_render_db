@@ -152,7 +152,7 @@ router.put('/update/player/:id', async (req, res) => {
     const updateLastName = req.body.last_name
     const updateAge = req.body.age
 
-    const  player = await Player.findByPk(id)
+    const player = await Player.findByPk(id)
     if(!player) {
       return res.json({message: 'Player not found'})
     }
@@ -166,7 +166,6 @@ router.put('/update/player/:id', async (req, res) => {
         player_id: id
       }
     })
-
     res.json(updatePlayer)
 
   } catch(err) {
@@ -199,7 +198,7 @@ router.put('/update/team/:id', async (req, res) => {
   } 
 })
 
-// Create a DELETE roiute to remove a PLAYER FROM A TABLE
+// Create a DELETE route to remove a PLAYER FROM A TABLE
 // router.delete('/delete/player')
 router.delete('/delete/player/:id', async (req, res) =>{
   try{
@@ -221,6 +220,7 @@ router.delete('/delete/player/:id', async (req, res) =>{
 
 router.delete('/team/:id', async (req, res) => {
   try{
+    const id = req.params.id
     const team = await Team.findByPk(id)
 
     if(team){
